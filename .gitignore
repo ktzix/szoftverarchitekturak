@@ -18,8 +18,10 @@ out/
 # release/
 
 # Gradle files
-.gradle/
-build/
+frontend/.gradle/
+frontend/build/
+backend/WebApplication/.gradle
+backend/WebApplication/build
 
 # Local configuration file (sdk path, etc)
 local.properties
