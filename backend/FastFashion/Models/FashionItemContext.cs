@@ -8,7 +8,7 @@ namespace FastFashion.Models
 {
     public class FashionItemContext : DbContext
     {
-
+           
         public FashionItemContext(DbContextOptions<FashionItemContext> options)
            : base(options)
         {

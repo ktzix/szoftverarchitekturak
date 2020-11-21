@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj": {}
+    "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj": {}
   },
   "projects": {
-    "d:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj": {
+    "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
+        "projectUniqueName": "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
         "projectName": "FastFashion",
-        "projectPath": "d:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
+        "projectPath": "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
         "packagesPath": "C:\\Users\\jozse\\.nuget\\packages\\",
-        "outputPath": "d:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\obj\\",
+        "outputPath": "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jozse\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,6 +71,14 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.6.3, )"
             }
           },
           "imports": [

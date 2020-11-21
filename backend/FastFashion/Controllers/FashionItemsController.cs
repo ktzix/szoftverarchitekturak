@@ -41,6 +41,35 @@ namespace FastFashion.Controllers
             return fashionItem;
         }
 
+        // GET: api/FashionItems/csiyma
+        [HttpGet("{Type}")]
+        public async Task<ActionResult<FashionItem>> GetFashionItemWithType(string type)
+        {
+
+            List<FashionItem> items =await _context.FashionItems.Where(item => item.Type == type).ToListAsync();
+
+           if (items == null)
+            {
+                return NotFound();
+            } 
+
+            return this.Ok(items);
+        }
+
+        [HttpGet("{Style}")]
+        public async Task<ActionResult<FashionItem>> GetFashionItemWithStyle(string style)
+        {
+
+            List<FashionItem> items = await _context.FashionItems.Where(item => item.Style == style).ToListAsync();
+
+            if (items == null)
+            {
+                return NotFound();
+            }
+
+            return this.Ok(items);
+        }
+
         // PUT: api/FashionItems/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
