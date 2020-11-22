@@ -7671,19 +7671,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jozse\\.nuget\\packages\\": {}
+    "C:\\Users\\Gabor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
+      "projectUniqueName": "G:\\BME\\MSC\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
       "projectName": "FastFashion",
-      "projectPath": "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
-      "packagesPath": "C:\\Users\\jozse\\.nuget\\packages\\",
-      "outputPath": "D:\\egyetem\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\obj\\",
+      "projectPath": "G:\\BME\\MSC\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\FastFashion.csproj",
+      "packagesPath": "C:\\Users\\Gabor\\.nuget\\packages\\",
+      "outputPath": "G:\\BME\\MSC\\szoftverarchitekturak\\szoftverarchitekturak\\backend\\FastFashion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jozse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gabor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
