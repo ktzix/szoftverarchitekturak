@@ -41,8 +41,8 @@ namespace FastFashion.Controllers
             return fashionItem;
         }
 
-        // GET: api/FashionItems/csiyma
-        [HttpGet("{Type}")]
+        // GET: api/FashionItems/type/csizma
+        [HttpGet("type/{Type}")]
         public async Task<ActionResult<FashionItem>> GetFashionItemWithType(string type)
         {
 
@@ -55,8 +55,8 @@ namespace FastFashion.Controllers
 
             return this.Ok(items);
         }
-
-        [HttpGet("{Style}")]
+        // GET: api/FashionItems/style/regi
+        [HttpGet("style/{Style}")]
         public async Task<ActionResult<FashionItem>> GetFashionItemWithStyle(string style)
         {
 
@@ -127,7 +127,7 @@ namespace FastFashion.Controllers
             _context.FashionItems.Remove(fashionItem);
             await _context.SaveChangesAsync();
 
-            return fashionItem;
+            return this.Ok();
         }
 
         private bool FashionItemExists(int id)
