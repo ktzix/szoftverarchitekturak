@@ -442,7 +442,6 @@ G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\D
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.csprojAssemblyReference.cache
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.GeneratedMSBuildEditorConfig.editorconfig
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.AssemblyInfoInputs.cache
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.AssemblyInfo.cs
