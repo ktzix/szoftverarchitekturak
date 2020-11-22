@@ -10,6 +10,9 @@ import android.os.Environment
 import android.os.StrictMode
 import android.provider.MediaStore
 import android.support.design.widget.Snackbar
+import android.widget.Toast
+import com.example.fastfashion.model.FashionItem
+import com.example.fastfashion.network.FashionInteractor
 import com.livinglifetechway.quickpermissions.annotations.OnPermissionsDenied
 import com.livinglifetechway.quickpermissions.annotations.WithPermissions
 import com.livinglifetechway.quickpermissions.util.QuickPermissionsRequest
@@ -19,13 +22,46 @@ import java.io.IOException
 
 class UploadActivity : AppCompatActivity() {
 
+    val REQUEST_IMAGE_CAPTURE = 1
+    var mCurrentPhotoPath: String=""
+    private val fashionInteractor = FashionInteractor()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload)
         ivPicture.setOnClickListener { dispatchTakePictureIntent() }
+        btnSave.setOnClickListener { uploadItem() }
     }
 
-    val REQUEST_IMAGE_CAPTURE = 1
+    private fun uploadItem(){
+        if(valid()){
+            val item = FashionItem(0, tvCategory.text.toString(), tvDesc.text.toString(),
+                tvStyle.text.toString(), Integer.parseInt(tvDate.text.toString()),mCurrentPhotoPath)
+            fashionInteractor.addFashionItem(item, this::onUploadSuccess, this::onUploadError)
+        }
+        else{
+            Toast.makeText(applicationContext, "Item is not valid", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun onUploadSuccess(item: FashionItem?){
+        if(item==null){
+            onUploadError(Exception("item is null"))
+        }
+        else{
+            Toast.makeText(applicationContext, "FashionItem uploaded with id: ${item!!.id}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun onUploadError(e:Throwable){
+        e.printStackTrace()
+        Toast.makeText(applicationContext,"Unable to upload FashionItem", Toast.LENGTH_LONG).show()
+    }
+
+    private fun valid(): Boolean{
+        return mCurrentPhotoPath!=""
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
@@ -36,7 +72,7 @@ class UploadActivity : AppCompatActivity() {
         }
     }
 
-    var mCurrentPhotoPath: String=""
+
 
     @Throws(IOException::class)
     private fun createImageFile(): File {

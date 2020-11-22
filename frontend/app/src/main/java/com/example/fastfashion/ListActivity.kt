@@ -17,8 +17,9 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
     private val fashionInteractor=FashionInteractor()
     private lateinit var items : ArrayList<FashionItem>
 
-    override fun onItemSelected() {
+    override fun onItemSelected(id: Int) {
         val intent = Intent(applicationContext, DetailsActivity::class.java)
+        intent.putExtra("id", id)
         startActivity(intent)
     }
 
@@ -37,7 +38,7 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
         loadItems()
 
     }
-    
+
     private fun loadItems(){
         fashionInteractor.getFashionItems(this::onLoadSuccess, this::onLoadError)
     }

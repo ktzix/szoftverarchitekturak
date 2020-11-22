@@ -19,13 +19,14 @@ class ClothesAdapter(private val context: Context,
     private val layoutInflater = LayoutInflater.from(context)
 
     interface ItemSelectedListener{
-        fun onItemSelected()
+        fun onItemSelected(id: Int)
 
     }
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
         holder.addListener(listener)
         holder.tvCategory.text=list!![p1].type
         holder.tvBought.text=list!![p1].age.toString()
+        holder.id=list!![p1].id
 
 
     }
@@ -40,10 +41,11 @@ class ClothesAdapter(private val context: Context,
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvCategory : TextView=view.tvCategory
         val tvBought: TextView  = view.tvBought
+        var id = 0
 
         fun addListener(listener: ItemSelectedListener){
             itemView.setOnClickListener {
-                listener.onItemSelected()
+                listener.onItemSelected(id)
             }
         }
     }

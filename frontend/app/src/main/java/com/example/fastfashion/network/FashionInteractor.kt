@@ -52,4 +52,35 @@ class FashionInteractor {
         val getRequest = fashionApi.getFashionItems()
         runCallOnBackgroundThread(getRequest,onSuccess,onError)
     }
+
+    fun getFashionItemById(id: Int, onSuccess: (FashionItem?) -> Unit, onError: (Throwable) -> Unit){
+        val req= fashionApi.getFashionItemById(id)
+        runCallOnBackgroundThread(req, onSuccess, onError)
+    }
+
+    fun getFashionItemsByStyle(style: String, onSuccess: (List<FashionItem>?) -> Unit, onError: (Throwable) -> Unit){
+        val req=fashionApi.getFashionItemsByStyle(style)
+        runCallOnBackgroundThread(req,onSuccess,onError)
+    }
+
+    fun getFashionItemsByType(type: String, onSuccess: (List<FashionItem>?) -> Unit, onError: (Throwable) -> Unit){
+        val req=fashionApi.getFashionItemsByType(type)
+        runCallOnBackgroundThread(req, onSuccess,onError)
+    }
+
+    fun modifyFashionItem(id: Int, param: FashionItem, onSuccess: (Void?) -> Unit, onError: (Throwable) -> Unit){
+        val req=fashionApi.modifyFashionItem(id, param)
+        runCallOnBackgroundThread(req, onSuccess, onError)
+    }
+
+    fun deleteFashionItem(id: Int, onSuccess: (FashionItem?) -> Unit, onError: (Throwable) -> Unit){
+        val req=fashionApi.deleteFashionItem(id)
+        runCallOnBackgroundThread(req, onSuccess, onError)
+    }
+
+    fun addFashionItem(param: FashionItem, onSuccess: (FashionItem?) -> Unit, onError: (Throwable) -> Unit){
+        val req=fashionApi.addFashionItem(param)
+        runCallOnBackgroundThread(req, onSuccess,onError)
+    }
+
 }
