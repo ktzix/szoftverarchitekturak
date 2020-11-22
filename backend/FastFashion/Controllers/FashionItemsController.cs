@@ -111,7 +111,7 @@ namespace FastFashion.Controllers
             _context.FashionItems.Add(fashionItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetFashionItem), new { id = fashionItem.Id });
+            return CreatedAtAction(nameof(GetFashionItem), new { id = fashionItem.Id }, fashionItem);
         }
 
         // DELETE: api/FashionItems/5
