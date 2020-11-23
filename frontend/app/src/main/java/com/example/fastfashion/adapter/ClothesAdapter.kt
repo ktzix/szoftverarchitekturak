@@ -25,14 +25,14 @@ class ClothesAdapter(private val context: Context,
 
     }
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
-        holder.addListener(listener, p1, list!![p1])
+        holder.addListener(listener, list!![p1].id, list!![p1])
         holder.tvCategory.text=list!![p1].type
         holder.tvBought.text=list!![p1].date
 
 
     }
 
-    override fun getItemCount()=5
+    override fun getItemCount()=list!!.size
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ClothesAdapter.ViewHolder {
         val view = layoutInflater.inflate(R.layout.listitem, p0, false)
@@ -46,7 +46,7 @@ class ClothesAdapter(private val context: Context,
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvCategory : TextView=view.tvCategory
+        val tvCategory : TextView=view.tvCat
         val tvBought: TextView  = view.tvBought
         val deleteBtn: ImageView=view.ivDelete
 

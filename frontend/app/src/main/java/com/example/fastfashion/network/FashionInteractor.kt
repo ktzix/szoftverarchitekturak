@@ -45,7 +45,6 @@ class FashionInteractor {
                 Log.i("statuscode", c.code().toString())
                 if(c.code()!=200){
                     Log.d("message", c.message())
-                    throw Exception(c.code().toString())
                 }
                 val response =c.body()
                 handler.post {

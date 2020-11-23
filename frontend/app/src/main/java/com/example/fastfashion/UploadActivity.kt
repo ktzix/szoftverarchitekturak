@@ -51,8 +51,8 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
         if(valid()){
            /* val item = FashionItem(0, tvCategory.text.toString(), tvDesc.text.toString(),
                 tvStyle.text.toString(), tvDate.text.toString(),mCurrentPhotoPath)*/
-            val item = FashionItemCreate( tvCategory.text.toString(), tvDesc.text.toString(),
-                tvStyle.text.toString(), tvDate.text.toString(),mCurrentPhotoPath)
+            val item = FashionItemCreate( etCategory.text.toString(), etDesc.text.toString(),
+                etStyle.text.toString(), etDate.text.toString(),mCurrentPhotoPath)
             fashionInteractor.addFashionItem(item, this::onUploadSuccess, this::onUploadError)
         }
         else{

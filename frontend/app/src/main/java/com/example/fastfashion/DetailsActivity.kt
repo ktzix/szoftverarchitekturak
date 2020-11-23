@@ -46,11 +46,17 @@ class DetailsActivity : AppCompatActivity() {
             textViewDate.text=item.date
             textViewDesc.text=item.detail
             textViewStyle.text=item.style
-            if(item.uri != ""){
-                val f2 = File(item.uri)
-                val uri = Uri.fromFile(f2)
-                imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, uri))
+            try{
+                if(item.uri != ""){
+                    val f2 = File(item.uri)
+                    val uri = Uri.fromFile(f2)
+                    imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, uri))
+                }
             }
+            catch(e: Exception){
+                e.printStackTrace()
+            }
+
         }
     }
 

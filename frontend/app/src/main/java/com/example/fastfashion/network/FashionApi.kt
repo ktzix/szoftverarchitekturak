@@ -9,7 +9,7 @@ interface FashionApi {
 
     companion object{
         //const val ENDPOINT_URL="http://192.168.100.12:44332"
-        const val ENDPOINT_URL="http://10.0.2.2:44332"
+        const val ENDPOINT_URL="https://fastfashion.azurewebsites.net"
         //const val ENDPOINT_URL="http://localhost:44332"
     }
 
