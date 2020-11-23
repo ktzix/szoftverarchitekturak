@@ -42,8 +42,8 @@ class DetailsActivity : AppCompatActivity() {
         }
         else{
             textViewCategory.text=item.type
-            textViewAge.text=item.age.toString()
-            textViewDate.text=item.age.toString()
+            textViewAge.text=item.date
+            textViewDate.text=item.date
             textViewDesc.text=item.detail
             textViewStyle.text=item.style
             if(item.uri != ""){

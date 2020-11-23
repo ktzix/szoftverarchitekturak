@@ -297,7 +297,6 @@ d:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\D
 d:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\ref\FastFashion.dll
 d:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.pdb
 d:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.genruntimeconfig.cache
-D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.csprojAssemblyReference.cache
 D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\Debug\net5.0\Microsoft.OpenApi.dll
 D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -457,3 +456,4 @@ G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\D
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\ref\FastFashion.dll
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.pdb
 G:\BME\MSC\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.genruntimeconfig.cache
+D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Debug\net5.0\FastFashion.csprojAssemblyReference.cache

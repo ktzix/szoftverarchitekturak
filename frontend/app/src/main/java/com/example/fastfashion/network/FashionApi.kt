@@ -1,20 +1,23 @@
 package com.example.fastfashion.network
 
 import com.example.fastfashion.model.FashionItem
+import com.example.fastfashion.model.FashionItemCreate
 import retrofit2.Call
 import retrofit2.http.*
 
 interface FashionApi {
 
     companion object{
-        const val ENDPOINT_URL="http://192.168.100.12:44332"
+        //const val ENDPOINT_URL="http://192.168.100.12:44332"
+        const val ENDPOINT_URL="http://10.0.2.2:44332"
+        //const val ENDPOINT_URL="http://localhost:44332"
     }
 
     @GET("/api/FashionItems")
     fun getFashionItems(): Call<List<FashionItem>>
 
     @POST("/api/FashionItems")
-    fun addFashionItem(@Body param: FashionItem): Call<FashionItem>
+    fun addFashionItem(@Body param: FashionItemCreate): Call<FashionItem>
 
     @GET("/api/FashionItems/{id}")
     fun getFashionItemById(@Path("id") id: Int): Call<FashionItem>

@@ -25,8 +25,8 @@ namespace FastFashion.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");

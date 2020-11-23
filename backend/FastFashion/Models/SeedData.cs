@@ -29,7 +29,7 @@ namespace FastFashion.Models
                     
                         Type="asd",
                         Style="igen",
-                        Age=5,
+                        Date="5",
                         Detail="nincs",
                         pictureUri="c:/nem"
 
@@ -40,7 +40,7 @@ namespace FastFashion.Models
 
                         Type = "sad",
                         Style = "ccc",
-                        Age = 2,
+                        Date = "2",
                         Detail = "ddddd",
                         pictureUri = "c:/nemaaaa"
 

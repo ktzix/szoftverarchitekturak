@@ -18,7 +18,7 @@ namespace FastFashion.Models
 
         public string Style { get; set; }
 
-        public int Age { get; set; }
+        public string Date { get; set; }
 
         public string pictureUri { get; set; }
 

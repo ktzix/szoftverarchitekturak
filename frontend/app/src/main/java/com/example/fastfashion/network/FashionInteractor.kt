@@ -3,17 +3,28 @@ package com.example.fastfashion.network
 import android.os.Handler
 import android.util.Log
 import com.example.fastfashion.model.FashionItem
+import com.example.fastfashion.model.FashionItemCreate
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
+
 
 class FashionInteractor {
     private val fashionApi: FashionApi
 
     init {
+        val innerClient = OkHttpClient.Builder()
+            .connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+            .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+            .readTimeout(5, TimeUnit.MINUTES) // read timeout
+            .build()
+
         val retrofit= Retrofit.Builder()
             .baseUrl(FashionApi.ENDPOINT_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(innerClient)
             .build()
 
         this.fashionApi=retrofit.create(FashionApi::class.java)
@@ -31,7 +42,7 @@ class FashionInteractor {
 
                 val c=call.execute()
 
-                Log.i("statuscode" ,c.code().toString())
+                Log.i("statuscode", c.code().toString())
                 if(c.code()!=200){
                     Log.d("message", c.message())
                     throw Exception(c.code().toString())
@@ -48,9 +59,9 @@ class FashionInteractor {
         }.start()
     }
 
-    fun getFashionItems(onSuccess: (List<FashionItem>?)-> Unit, onError: (Throwable) -> Unit){
+    fun getFashionItems(onSuccess: (List<FashionItem>?) -> Unit, onError: (Throwable) -> Unit){
         val getRequest = fashionApi.getFashionItems()
-        runCallOnBackgroundThread(getRequest,onSuccess,onError)
+        runCallOnBackgroundThread(getRequest, onSuccess, onError)
     }
 
     fun getFashionItemById(id: Int, onSuccess: (FashionItem?) -> Unit, onError: (Throwable) -> Unit){
@@ -58,17 +69,30 @@ class FashionInteractor {
         runCallOnBackgroundThread(req, onSuccess, onError)
     }
 
-    fun getFashionItemsByStyle(style: String, onSuccess: (List<FashionItem>?) -> Unit, onError: (Throwable) -> Unit){
+    fun getFashionItemsByStyle(
+        style: String,
+        onSuccess: (List<FashionItem>?) -> Unit,
+        onError: (Throwable) -> Unit
+    ){
         val req=fashionApi.getFashionItemsByStyle(style)
-        runCallOnBackgroundThread(req,onSuccess,onError)
+        runCallOnBackgroundThread(req, onSuccess, onError)
     }
 
-    fun getFashionItemsByType(type: String, onSuccess: (List<FashionItem>?) -> Unit, onError: (Throwable) -> Unit){
+    fun getFashionItemsByType(
+        type: String,
+        onSuccess: (List<FashionItem>?) -> Unit,
+        onError: (Throwable) -> Unit
+    ){
         val req=fashionApi.getFashionItemsByType(type)
-        runCallOnBackgroundThread(req, onSuccess,onError)
+        runCallOnBackgroundThread(req, onSuccess, onError)
     }
 
-    fun modifyFashionItem(id: Int, param: FashionItem, onSuccess: (Void?) -> Unit, onError: (Throwable) -> Unit){
+    fun modifyFashionItem(
+        id: Int,
+        param: FashionItem,
+        onSuccess: (Void?) -> Unit,
+        onError: (Throwable) -> Unit
+    ){
         val req=fashionApi.modifyFashionItem(id, param)
         runCallOnBackgroundThread(req, onSuccess, onError)
     }
@@ -78,9 +102,13 @@ class FashionInteractor {
         runCallOnBackgroundThread(req, onSuccess, onError)
     }
 
-    fun addFashionItem(param: FashionItem, onSuccess: (FashionItem?) -> Unit, onError: (Throwable) -> Unit){
+    fun addFashionItem(
+        param: FashionItemCreate,
+        onSuccess: (FashionItem?) -> Unit,
+        onError: (Throwable) -> Unit
+    ){
         val req=fashionApi.addFashionItem(param)
-        runCallOnBackgroundThread(req, onSuccess,onError)
+        runCallOnBackgroundThread(req, onSuccess, onError)
     }
 
 }

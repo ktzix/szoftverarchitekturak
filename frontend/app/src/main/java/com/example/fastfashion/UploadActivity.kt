@@ -13,6 +13,7 @@ import android.support.design.widget.Snackbar
 import android.widget.Toast
 import com.example.fastfashion.fragments.DatePickerDialogFragment
 import com.example.fastfashion.model.FashionItem
+import com.example.fastfashion.model.FashionItemCreate
 import com.example.fastfashion.network.FashionInteractor
 import com.livinglifetechway.quickpermissions.annotations.OnPermissionsDenied
 import com.livinglifetechway.quickpermissions.annotations.WithPermissions
@@ -50,8 +51,8 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
         if(valid()){
            /* val item = FashionItem(0, tvCategory.text.toString(), tvDesc.text.toString(),
                 tvStyle.text.toString(), tvDate.text.toString(),mCurrentPhotoPath)*/
-            val item = FashionItem(0, tvCategory.text.toString(), tvDesc.text.toString(),
-                tvStyle.text.toString(), 1000,mCurrentPhotoPath)
+            val item = FashionItemCreate( tvCategory.text.toString(), tvDesc.text.toString(),
+                tvStyle.text.toString(), tvDate.text.toString(),mCurrentPhotoPath)
             fashionInteractor.addFashionItem(item, this::onUploadSuccess, this::onUploadError)
         }
         else{

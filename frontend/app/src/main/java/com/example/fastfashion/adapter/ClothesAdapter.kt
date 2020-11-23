@@ -27,7 +27,7 @@ class ClothesAdapter(private val context: Context,
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
         holder.addListener(listener, p1, list!![p1])
         holder.tvCategory.text=list!![p1].type
-        holder.tvBought.text=list!![p1].age.toString()
+        holder.tvBought.text=list!![p1].date
 
 
     }

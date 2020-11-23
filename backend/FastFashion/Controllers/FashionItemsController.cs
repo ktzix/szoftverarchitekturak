@@ -106,12 +106,23 @@ namespace FastFashion.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<FashionItem>> PostFashionItem(FashionItem fashionItem)
+        public async Task<ActionResult<FashionItem>> PostFashionItem(FashionItemCreate fashionItem)
         {
-            _context.FashionItems.Add(fashionItem);
+            FashionItem item = new FashionItem
+            {
+                Style = fashionItem.Style,
+                Detail = fashionItem.Detail,
+                 Type = fashionItem.Type,
+                 Date = fashionItem.Date,
+                 pictureUri = fashionItem.pictureUri
+
+
+            };
+
+            _context.FashionItems.Add(item);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetFashionItem), new { id = fashionItem.Id }, fashionItem);
+            return CreatedAtAction(nameof(GetFashionItem), new { id = item.Id }, item);
         }
 
         // DELETE: api/FashionItems/5
