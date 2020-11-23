@@ -11,6 +11,7 @@ import android.os.StrictMode
 import android.provider.MediaStore
 import android.support.design.widget.Snackbar
 import android.widget.Toast
+import com.example.fastfashion.fragments.DatePickerDialogFragment
 import com.example.fastfashion.model.FashionItem
 import com.example.fastfashion.network.FashionInteractor
 import com.livinglifetechway.quickpermissions.annotations.OnPermissionsDenied
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_upload.*
 import java.io.File
 import java.io.IOException
 
-class UploadActivity : AppCompatActivity() {
+class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListener {
 
     val REQUEST_IMAGE_CAPTURE = 1
     var mCurrentPhotoPath: String=""
@@ -31,7 +32,19 @@ class UploadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_upload)
         ivPicture.setOnClickListener { dispatchTakePictureIntent() }
         btnSave.setOnClickListener { uploadItem() }
+        etDate.setOnClickListener { showDatePickerDialog() }
     }
+
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerDialogFragment()
+        val fm= this@UploadActivity.supportFragmentManager
+        datePicker.show(fm,"TAG")
+    }
+
+    override fun onDateSelected(date: String) {
+        etDate.setText(date)
+    }
+
 
     private fun uploadItem(){
         if(valid()){
@@ -50,6 +63,7 @@ class UploadActivity : AppCompatActivity() {
         }
         else{
             Toast.makeText(applicationContext, "Új ruhadarab feltöltve az adott id-val: ${item!!.id}", Toast.LENGTH_LONG).show()
+            finish()
         }
     }
 
