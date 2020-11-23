@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title="Főmenü"
         setContentView(R.layout.activity_main)
         btnNewItem.setOnClickListener {
 

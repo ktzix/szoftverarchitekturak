@@ -21,9 +21,11 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
     private lateinit var items : ArrayList<FashionItem>
 
     private var adapter: ClothesAdapter? = null
+    private lateinit var itemToDelete: FashionItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title="Ruhadarabok"
         setContentView(R.layout.activity_list)
         setSupportActionBar(toolbar)
 
@@ -84,6 +86,7 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
     }
 
     override fun onItemDeleted(item: FashionItem) {
+        itemToDelete=item
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Biztosan törölni szeretnéd ezt a fájlt? ")
         builder.setPositiveButton("IGEN", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
@@ -93,14 +96,10 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
         builder.show()
     }
 
-    private fun onDeleteSuccess(item: FashionItem?){
-        if(item==null){
-            onDeleteError(Exception("Hiba törlés közben"))
-        }
-        else{
-            adapter!!.deleteItem(item)
+    private fun onDeleteSuccess(item: Void?){
+            adapter!!.deleteItem(itemToDelete)
             Toast.makeText(applicationContext, "Sikeres törlés!", Toast.LENGTH_LONG ).show()
-        }
+
     }
 
     private fun onDeleteError(e: Throwable){

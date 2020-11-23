@@ -30,6 +30,7 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title="Feltöltés"
         setContentView(R.layout.activity_upload)
         ivPicture.setOnClickListener { dispatchTakePictureIntent() }
         btnSave.setOnClickListener { uploadItem() }

@@ -26,7 +26,7 @@ interface FashionApi {
     fun modifyFashionItem(@Path("id")id :Int, @Body param: FashionItem): Call<Void>
 
     @DELETE("/api/FashionItems/{id}")
-    fun deleteFashionItem(@Path("id") id: Int): Call<FashionItem>
+    fun deleteFashionItem(@Path("id") id: Int): Call<Void>
 
     @GET("/api/FashionItems/type/{Type}")
     fun getFashionItemsByType(@Path("Type") type: String): Call<List<FashionItem>>

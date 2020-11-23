@@ -96,7 +96,7 @@ class FashionInteractor {
         runCallOnBackgroundThread(req, onSuccess, onError)
     }
 
-    fun deleteFashionItem(id: Int, onSuccess: (FashionItem?) -> Unit, onError: (Throwable) -> Unit){
+    fun deleteFashionItem(id: Int, onSuccess: (Void?) -> Unit, onError: (Throwable) -> Unit){
         val req=fashionApi.deleteFashionItem(id)
         runCallOnBackgroundThread(req, onSuccess, onError)
     }

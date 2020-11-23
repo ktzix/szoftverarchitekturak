@@ -17,6 +17,7 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title="Ruhadarab részletei"
         setContentView(R.layout.activity_details)
         id= intent.getIntExtra("id", 0)
 
