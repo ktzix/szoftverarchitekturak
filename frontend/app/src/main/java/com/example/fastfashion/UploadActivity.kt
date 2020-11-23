@@ -48,8 +48,10 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
 
     private fun uploadItem(){
         if(valid()){
+           /* val item = FashionItem(0, tvCategory.text.toString(), tvDesc.text.toString(),
+                tvStyle.text.toString(), tvDate.text.toString(),mCurrentPhotoPath)*/
             val item = FashionItem(0, tvCategory.text.toString(), tvDesc.text.toString(),
-                tvStyle.text.toString(), Integer.parseInt(tvDate.text.toString()),mCurrentPhotoPath)
+                tvStyle.text.toString(), 1000,mCurrentPhotoPath)
             fashionInteractor.addFashionItem(item, this::onUploadSuccess, this::onUploadError)
         }
         else{

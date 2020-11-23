@@ -1,11 +1,14 @@
 package com.example.fastfashion
 
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Toast
 import com.example.fastfashion.model.FashionItem
 import com.example.fastfashion.network.FashionInteractor
 import kotlinx.android.synthetic.main.activity_details.*
+import java.io.File
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -23,7 +26,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun onLoadError(e: Throwable){
-        Toast.makeText(applicationContext, "Unable to load FashionItem", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "Nem sikerült betölteni a ruhadarabot!", Toast.LENGTH_LONG).show()
         textViewCategory.text="Ide jön a ruhadarab kategóriája"
         textViewAge.text="Ide jön a ruhadarab életkora"
         textViewDate.text="Ide jön a ruhadarab megvásárlásának ideje"
@@ -35,7 +38,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun onLoadSuccess(item: FashionItem?){
         if(item==null){
-            onLoadError(Exception("item is null"))
+            onLoadError(Exception("Nem sikerült betölteni a ruhadarabot!"))
         }
         else{
             textViewCategory.text=item.type
@@ -43,6 +46,11 @@ class DetailsActivity : AppCompatActivity() {
             textViewDate.text=item.age.toString()
             textViewDesc.text=item.detail
             textViewStyle.text=item.style
+            if(item.uri != ""){
+                val f2 = File(item.uri)
+                val uri = Uri.fromFile(f2)
+                imageView.setImageBitmap(MediaStore.Images.Media.getBitmap(contentResolver, uri))
+            }
         }
     }
 
