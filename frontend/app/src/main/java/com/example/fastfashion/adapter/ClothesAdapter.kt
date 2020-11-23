@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.fastfashion.R
 import com.example.fastfashion.model.FashionItem
@@ -20,13 +21,13 @@ class ClothesAdapter(private val context: Context,
 
     interface ItemSelectedListener{
         fun onItemSelected(id: Int)
+        fun onItemDeleted(item: FashionItem)
 
     }
     override fun onBindViewHolder(holder: ViewHolder, p1: Int) {
-        holder.addListener(listener)
+        holder.addListener(listener, p1, list!![p1])
         holder.tvCategory.text=list!![p1].type
         holder.tvBought.text=list!![p1].age.toString()
-        holder.id=list!![p1].id
 
 
     }
@@ -38,14 +39,24 @@ class ClothesAdapter(private val context: Context,
         return ViewHolder(view)
     }
 
+    fun deleteItem(item: FashionItem){
+        val pos= list!!.indexOf(item)
+        list.removeAt(pos)
+        notifyItemRemoved(pos)
+    }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvCategory : TextView=view.tvCategory
         val tvBought: TextView  = view.tvBought
-        var id = 0
+        val deleteBtn: ImageView=view.ivDelete
 
-        fun addListener(listener: ItemSelectedListener){
+
+        fun addListener(listener: ItemSelectedListener,id: Int, item: FashionItem){
             itemView.setOnClickListener {
                 listener.onItemSelected(id)
+            }
+            deleteBtn.setOnClickListener {
+                listener.onItemDeleted(item)
             }
         }
     }

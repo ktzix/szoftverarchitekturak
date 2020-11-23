@@ -8,12 +8,37 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_list"
         tools:context=".ListActivity">
+
+    <LinearLayout  app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                   android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+                   android:id="@+id/linearLayout">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_margin="10dp"
+    android:orientation="horizontal" android:weightSum="2" >
+
+        <Spinner android:layout_width="match_parent" android:layout_height="30dp" android:layout_weight="1"
+         android:id="@+id/spinner"/>
+        <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:hint="Keresési érték" android:layout_weight="1"
+        android:id="@+id/etSearchValue"/>
+    </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="horizontal" android:weightSum="2" android:layout_margin="10dp">
+                <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Keresés" android:id="@+id/btnSearch"
+                android:layout_weight="1" android:layout_marginRight="10dp"/>
+
+            <Button  android:layout_weight="1" android:layout_marginLeft="10dp" android:layout_width="match_parent"
+                     android:layout_height="wrap_content" android:text="Osszes" android:id="@+id/btnAll"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
     <android.support.v7.widget.RecyclerView
             android:id="@+id/rvList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_constraitStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="?attr/actionBarSize"/>
+            tools:layout_constraitStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
 
 </android.support.constraint.ConstraintLayout>

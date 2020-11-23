@@ -1,10 +1,13 @@
 package com.example.fastfashion
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.fastfashion.adapter.ClothesAdapter
 import com.example.fastfashion.model.FashionItem
@@ -17,12 +20,6 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
     private val fashionInteractor=FashionInteractor()
     private lateinit var items : ArrayList<FashionItem>
 
-    override fun onItemSelected(id: Int) {
-        val intent = Intent(applicationContext, DetailsActivity::class.java)
-        intent.putExtra("id", id)
-        startActivity(intent)
-    }
-
     private var adapter: ClothesAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,13 +27,26 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
         setContentView(R.layout.activity_list)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        btnAll.setOnClickListener {
+            loadItems()
         }
 
+        btnSearch.setOnClickListener {
+            searchItems()
+        }
+
+        initSpinner()
         loadItems()
 
+    }
+
+    private fun initSpinner(){
+        val list=ArrayList<String>()
+        list.add("Típus")
+        list.add("Stílus")
+        var aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, list)
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter=aa
     }
 
     private fun loadItems(){
@@ -55,8 +65,49 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
 
     private fun onLoadError(e: Throwable){
         e.printStackTrace()
-        Toast.makeText(applicationContext, "unable load fashionitems", Toast.LENGTH_LONG ).show()
+        Toast.makeText(applicationContext, "Nem sikerült betölteni a ruhadarabokat!", Toast.LENGTH_LONG ).show()
     }
+
+
+    private fun searchItems(){
+        if(spinner.selectedItem.toString()=="Típus"){
+            fashionInteractor.getFashionItemsByType(etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
+        }
+        else if(spinner.selectedItem.toString()=="Stílus"){
+            fashionInteractor.getFashionItemsByStyle(etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
+        }
+    }
+    override fun onItemSelected(id: Int) {
+        val intent = Intent(applicationContext, DetailsActivity::class.java)
+        intent.putExtra("id", id)
+        startActivity(intent)
+    }
+
+    override fun onItemDeleted(item: FashionItem) {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Biztosan törölni szeretnéd ezt a fájlt? ")
+        builder.setPositiveButton("IGEN", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
+            fashionInteractor.deleteFashionItem(item.id,this::onDeleteSuccess, this::onDeleteError)
+        })
+        builder.setNegativeButton("NEM", null)
+        builder.show()
+    }
+
+    private fun onDeleteSuccess(item: FashionItem?){
+        if(item==null){
+            onDeleteError(Exception("Hiba törlés közben"))
+        }
+        else{
+            adapter!!.deleteItem(item)
+            Toast.makeText(applicationContext, "Sikeres törlés!", Toast.LENGTH_LONG ).show()
+        }
+    }
+
+    private fun onDeleteError(e: Throwable){
+        e.printStackTrace()
+        Toast.makeText(applicationContext, "Sikertelen törlés!", Toast.LENGTH_LONG ).show()
+    }
+
 
 
 }

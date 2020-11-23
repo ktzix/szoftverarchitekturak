@@ -40,7 +40,7 @@ class UploadActivity : AppCompatActivity() {
             fashionInteractor.addFashionItem(item, this::onUploadSuccess, this::onUploadError)
         }
         else{
-            Toast.makeText(applicationContext, "Item is not valid", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Nincs kitöltve minden mező!", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -49,17 +49,21 @@ class UploadActivity : AppCompatActivity() {
             onUploadError(Exception("item is null"))
         }
         else{
-            Toast.makeText(applicationContext, "FashionItem uploaded with id: ${item!!.id}", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Új ruhadarab feltöltve az adott id-val: ${item!!.id}", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun onUploadError(e:Throwable){
         e.printStackTrace()
-        Toast.makeText(applicationContext,"Unable to upload FashionItem", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext,"Nem sikerült feltölteni a ruhadarabot!", Toast.LENGTH_LONG).show()
     }
 
     private fun valid(): Boolean{
-        return mCurrentPhotoPath!=""
+        if(mCurrentPhotoPath=="") return false
+        else if(etCategory.text.toString()=="") return false
+        else if(etDate.text.toString()=="") return false
+        else if(etDesc.text.toString()=="") return false
+        else return etStyle.text.toString() != ""
     }
 
 
