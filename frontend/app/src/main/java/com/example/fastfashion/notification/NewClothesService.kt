@@ -35,8 +35,8 @@ class NewClothesService: Service() {
 
         //THIS IS WHERE YOU SET NOTIFICATION TIME FOR CASES WHEN THE NOTIFICATION NEEDS TO BE RESCHEDULED
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 17)
-        calendar.set(Calendar.MINUTE, 44)
+        calendar.set(Calendar.HOUR_OF_DAY, 9)
+        calendar.set(Calendar.MINUTE, 41)
 
         myIntent = Intent(this, AlarmNotificationReceiver::class.java)
         pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0)

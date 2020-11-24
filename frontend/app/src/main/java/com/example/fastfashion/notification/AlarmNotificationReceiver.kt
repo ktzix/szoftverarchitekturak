@@ -12,6 +12,10 @@ import android.content.Intent
 import android.support.v4.app.NotificationCompat
 import android.util.Log
 import android.app.NotificationChannel
+import android.net.Uri
+import android.system.Os.link
+
+
 
 
 
@@ -35,18 +39,22 @@ class AlarmNotificationReceiver: BroadcastReceiver() {
             channel.description = "YOUR_NOTIFICATION_CHANNEL_DESCRIPTION"
             notificationManager.createNotificationChannel(channel)
         }
-        builder.setAutoCancel(true)
+        val noti= builder.setAutoCancel(true)
             .setDefaults(Notification.DEFAULT_ALL)
             .setWhen(System.currentTimeMillis())
             .setContentTitle("Elavult ruhadarabok")
-            .setContentIntent(pendingIntent)
+           // .setContentIntent(pendingIntent)
             .setChannelId("YOUR_CHANNEL_ID")
             .setSmallIcon(com.example.fastfashion.R.drawable.ic_launcher_foreground)
             .setContentText("Ideje lenne új ruhadarabokat beszerezni! Nézd meg a legújabb ajánlatokat!")
             .setDefaults(Notification.DEFAULT_LIGHTS or Notification.DEFAULT_SOUND)
             .setContentInfo("Info")
 
+        val notificationIntent = Intent(Intent.ACTION_VIEW)
+        notificationIntent.data = Uri.parse("https://www.vangraaf.com/hu/")
 
+        val pending = PendingIntent.getActivity(context, 0, notificationIntent, FLAG_ONE_SHOT)
+        noti.setContentIntent(pending)
 
 
         Log.i("notifi", "noti")

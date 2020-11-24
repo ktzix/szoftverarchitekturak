@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         // SET TIME HERE
         val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 17)
-        calendar.set(Calendar.MINUTE, 44)
+        calendar.set(Calendar.HOUR_OF_DAY, 9)
+        calendar.set(Calendar.MINUTE, 41)
 
 
         myIntent = Intent(this@MainActivity, AlarmNotificationReceiver::class.java)
