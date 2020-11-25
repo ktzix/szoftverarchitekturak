@@ -14,5 +14,7 @@ data class FashionItem (
     @SerializedName("date")
     val date: String,
     @SerializedName("pictureUri")
-    val uri: String
+    val uri: String,
+    @SerializedName("userId")
+    val userId:Int
 )

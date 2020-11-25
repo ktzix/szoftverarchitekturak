@@ -15,18 +15,21 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-
+    private var userId =0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title="Főmenü"
         setContentView(R.layout.activity_main)
+        userId=intent.getIntExtra("id", 0)
         btnNewItem.setOnClickListener {
 
             val intent = Intent(applicationContext, UploadActivity::class.java)
+            intent.putExtra("id", userId)
             startActivity(intent)
         }
         btnList.setOnClickListener {
             val intent = Intent(applicationContext, ListActivity::class.java)
+            intent.putExtra("id", userId)
             startActivity(intent)
         }
         startAlarm(true, true)

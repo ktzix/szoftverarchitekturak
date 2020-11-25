@@ -1,6 +1,9 @@
 package com.example.fastfashion.network
 
 import android.os.Handler
+import com.example.fastfashion.model.IdResult
+import com.example.fastfashion.model.User
+import com.example.fastfashion.model.UserCreate
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -39,15 +42,15 @@ class AuthInteractor {
         }.start()
     }
 
-    fun login(onSuccess: (Void) -> Unit, onError: (Throwable) -> Unit){
+    fun login(param: UserCreate, onSuccess: (IdResult) -> Unit, onError: (Throwable) -> Unit){
 
-        val loginRequest=authApi.login()
+        val loginRequest=authApi.login(param)
         runCallOnBackgroundThread(loginRequest,onSuccess, onError)
     }
 
-    fun register( onSuccess: (Void) -> Unit, onError: (Throwable) -> Unit){
+    fun register(param: UserCreate, onSuccess: (IdResult) -> Unit, onError: (Throwable) -> Unit){
 
-        val registerRequest=authApi.register()
+        val registerRequest=authApi.register(param)
         runCallOnBackgroundThread(registerRequest,onSuccess, onError)
 
     }

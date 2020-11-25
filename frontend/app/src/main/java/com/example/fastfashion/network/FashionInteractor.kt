@@ -58,8 +58,8 @@ class FashionInteractor {
         }.start()
     }
 
-    fun getFashionItems(onSuccess: (List<FashionItem>?) -> Unit, onError: (Throwable) -> Unit){
-        val getRequest = fashionApi.getFashionItems()
+    fun getFashionItems(userId: Int, onSuccess: (List<FashionItem>?) -> Unit, onError: (Throwable) -> Unit){
+        val getRequest = fashionApi.getFashionItems(userId)
         runCallOnBackgroundThread(getRequest, onSuccess, onError)
     }
 
@@ -69,20 +69,22 @@ class FashionInteractor {
     }
 
     fun getFashionItemsByStyle(
+        userId: Int,
         style: String,
         onSuccess: (List<FashionItem>?) -> Unit,
         onError: (Throwable) -> Unit
     ){
-        val req=fashionApi.getFashionItemsByStyle(style)
+        val req=fashionApi.getFashionItemsByStyle(style, userId)
         runCallOnBackgroundThread(req, onSuccess, onError)
     }
 
     fun getFashionItemsByType(
+        userId: Int,
         type: String,
         onSuccess: (List<FashionItem>?) -> Unit,
         onError: (Throwable) -> Unit
     ){
-        val req=fashionApi.getFashionItemsByType(type)
+        val req=fashionApi.getFashionItemsByType(type, userId)
         runCallOnBackgroundThread(req, onSuccess, onError)
     }
 

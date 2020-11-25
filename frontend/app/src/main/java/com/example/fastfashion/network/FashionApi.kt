@@ -13,8 +13,8 @@ interface FashionApi {
         //const val ENDPOINT_URL="http://localhost:44332"
     }
 
-    @GET("/api/FashionItems")
-    fun getFashionItems(): Call<List<FashionItem>>
+    @GET("/api/FashionItems/all/{userId}")
+    fun getFashionItems(@Path("userId") userId: Int): Call<List<FashionItem>>
 
     @POST("/api/FashionItems")
     fun addFashionItem(@Body param: FashionItemCreate): Call<FashionItem>
@@ -28,9 +28,9 @@ interface FashionApi {
     @DELETE("/api/FashionItems/{id}")
     fun deleteFashionItem(@Path("id") id: Int): Call<Void>
 
-    @GET("/api/FashionItems/type/{Type}")
-    fun getFashionItemsByType(@Path("Type") type: String): Call<List<FashionItem>>
+    @GET("/api/FashionItems/type/{Type}/{UserId}")
+    fun getFashionItemsByType(@Path("Type") type: String, @Path("UserId") userId: Int): Call<List<FashionItem>>
 
-    @GET("/api/FashionItems/style/{Style}")
-    fun getFashionItemsByStyle(@Path("Style") style: String): Call<List<FashionItem>>
+    @GET("/api/FashionItems/style/{Style}/{UserId}")
+    fun getFashionItemsByStyle(@Path("Style") style: String, @Path("UserId") userId: Int): Call<List<FashionItem>>
 }

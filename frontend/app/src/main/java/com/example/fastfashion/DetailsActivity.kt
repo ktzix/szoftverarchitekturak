@@ -15,11 +15,15 @@ class DetailsActivity : AppCompatActivity() {
     private var id=0
     private val fashionInteractor= FashionInteractor()
 
+    private var userId=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title="Ruhadarab részletei"
+
         setContentView(R.layout.activity_details)
         id= intent.getIntExtra("id", 0)
+        userId=intent.getIntExtra("userId",0)
 
         fashionInteractor.getFashionItemById(id, this::onLoadSuccess, this::onLoadError)
 

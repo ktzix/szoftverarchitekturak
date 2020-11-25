@@ -23,9 +23,12 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
     private var adapter: ClothesAdapter? = null
     private lateinit var itemToDelete: FashionItem
 
+    private var userId=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title="Ruhadarabok"
+        userId=intent.getIntExtra("id",0)
         setContentView(R.layout.activity_list)
         setSupportActionBar(toolbar)
 
@@ -52,7 +55,7 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
     }
 
     private fun loadItems(){
-        fashionInteractor.getFashionItems(this::onLoadSuccess, this::onLoadError)
+        fashionInteractor.getFashionItems(userId, this::onLoadSuccess, this::onLoadError)
     }
 
     private fun onLoadSuccess(list: List<FashionItem>?){
@@ -73,15 +76,16 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
 
     private fun searchItems(){
         if(spinner.selectedItem.toString()=="Típus"){
-            fashionInteractor.getFashionItemsByType(etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
+            fashionInteractor.getFashionItemsByType(userId, etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
         }
         else if(spinner.selectedItem.toString()=="Stílus"){
-            fashionInteractor.getFashionItemsByStyle(etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
+            fashionInteractor.getFashionItemsByStyle(userId, etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
         }
     }
     override fun onItemSelected(id: Int) {
         val intent = Intent(applicationContext, DetailsActivity::class.java)
         intent.putExtra("id", id)
+        intent.putExtra("userId", userId)
         startActivity(intent)
     }
 

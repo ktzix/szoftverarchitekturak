@@ -28,10 +28,13 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
     var mCurrentPhotoPath: String=""
     private val fashionInteractor = FashionInteractor()
 
+    private var userId=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title="Feltöltés"
         setContentView(R.layout.activity_upload)
+        userId=intent.getIntExtra("id", 0)
         ivPicture.setOnClickListener { dispatchTakePictureIntent() }
         btnSave.setOnClickListener { uploadItem() }
         etDate.setOnClickListener { showDatePickerDialog() }
@@ -53,7 +56,7 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
            /* val item = FashionItem(0, tvCategory.text.toString(), tvDesc.text.toString(),
                 tvStyle.text.toString(), tvDate.text.toString(),mCurrentPhotoPath)*/
             val item = FashionItemCreate( etCategory.text.toString(), etDesc.text.toString(),
-                etStyle.text.toString(), etDate.text.toString(),mCurrentPhotoPath)
+                etStyle.text.toString(), etDate.text.toString(),mCurrentPhotoPath, userId)
             fashionInteractor.addFashionItem(item, this::onUploadSuccess, this::onUploadError)
         }
         else{
@@ -77,11 +80,27 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
     }
 
     private fun valid(): Boolean{
-        if(mCurrentPhotoPath=="") return false
-        else if(etCategory.text.toString()=="") return false
-        else if(etDate.text.toString()=="") return false
-        else if(etDesc.text.toString()=="") return false
-        else return etStyle.text.toString() != ""
+        var retVal=true
+        if(mCurrentPhotoPath=="") {
+            retVal=false
+        }
+        if(etCategory.text.toString()==""){
+            retVal=false
+            etStyle.error="Adja meg a kategóriát!"
+        }
+        if(etDate.text.toString()=="") {
+            retVal=false
+            etDate.error="Válassza ki a dátumot!"
+        }
+        if(etDesc.text.toString()==""){
+            retVal=false
+            etDesc.error="Adjon meg leírást!"
+        }
+        if (etStyle.text.toString() == ""){
+            retVal=false
+            etStyle.error="Adja meg a stílust"
+        }
+        return retVal
     }
 
 
