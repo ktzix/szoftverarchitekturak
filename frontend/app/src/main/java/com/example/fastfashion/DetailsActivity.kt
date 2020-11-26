@@ -19,7 +19,7 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title="Ruhadarab részletei"
+        title=getString(R.string.title_details)
 
         setContentView(R.layout.activity_details)
         id= intent.getIntExtra("id", 0)
@@ -31,23 +31,17 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun onLoadError(e: Throwable){
-        Toast.makeText(applicationContext, "Nem sikerült betölteni a ruhadarabot!", Toast.LENGTH_LONG).show()
-        textViewCategory.text="Ide jön a ruhadarab kategóriája"
-        textViewAge.text="Ide jön a ruhadarab életkora"
-        textViewDate.text="Ide jön a ruhadarab megvásárlásának ideje"
-        textViewDesc.text="Ide jön a ruhadarab leírása"
-        textViewStyle.text="Ide jön a ruhadarab stílusa"
+        Toast.makeText(applicationContext, getString(R.string.detail_load_error), Toast.LENGTH_LONG).show()
         e.printStackTrace()
 
     }
 
     private fun onLoadSuccess(item: FashionItem?){
         if(item==null){
-            onLoadError(Exception("Nem sikerült betölteni a ruhadarabot!"))
+            onLoadError(Exception(getString(R.string.detail_load_error)))
         }
         else{
             textViewCategory.text=item.type
-            textViewAge.text=item.date
             textViewDate.text=item.date
             textViewDesc.text=item.detail
             textViewStyle.text=item.style

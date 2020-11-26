@@ -21,13 +21,11 @@
             <TextView android:layout_width="wrap_content"
                       android:layout_height="30dp"
                       android:textSize="20sp"
-                      android:id="@+id/tvCat"
-                      android:text="valami"/>
+                      android:id="@+id/tvCat"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="30dp"
                       android:id="@+id/tvBought"
-                      android:textSize="20sp"
-                      android:text="valami"/>
+                      android:textSize="20sp"/>
 
 
         </LinearLayout>

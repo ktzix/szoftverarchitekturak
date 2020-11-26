@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private var userId =0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title="Főmenü"
+        title=getString(R.string.title_Main)
         setContentView(R.layout.activity_main)
         userId=intent.getIntExtra("id", 0)
         btnNewItem.setOnClickListener {
@@ -31,6 +31,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, ListActivity::class.java)
             intent.putExtra("id", userId)
             startActivity(intent)
+        }
+        btnLogout.setOnClickListener {
+            onBackPressed()
         }
         startAlarm(true, true)
 
@@ -50,13 +53,10 @@ class MainActivity : AppCompatActivity() {
         myIntent = Intent(this@MainActivity, AlarmNotificationReceiver::class.java)
         pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0)
 
-Log.i("1", "1")
         if (!isRepeat) {
             manager.set(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime() + 3000, pendingIntent)
 
-            Log.i("2", "2")
         }else{
-        Log.i("3", "3")
             manager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 calendar.getTimeInMillis(),

@@ -29,6 +29,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onLoginSuccess(idres: IdResult){
+        input_username.error=null
+        input_password.error=null
         val intent = Intent(applicationContext, MainActivity::class.java)
         intent.putExtra("id", idres.userId)
         startActivity(intent)
@@ -36,17 +38,20 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onLoginError(e: Throwable) {
         e.printStackTrace()
-        Toast.makeText(applicationContext, "Sikertelen bejelentkezés!", Toast.LENGTH_LONG).show()
-
+        Toast.makeText(applicationContext, getString(R.string.unsucc_login), Toast.LENGTH_LONG).show()
+        input_username.error=getString(R.string.login_error)
+        input_password.error=getString(R.string.login_error)
 
     }
 
     private fun onRegisterSuccess(idres: IdResult){
-        Toast.makeText(applicationContext, "Sikeres regisztráció!", Toast.LENGTH_LONG).show()
+        input_username.error=null
+        input_password.error=null
+        Toast.makeText(applicationContext, getString(R.string.register_succ), Toast.LENGTH_LONG).show()
     }
 
     private fun onRegisterError(e: Throwable){
-        Toast.makeText(applicationContext, "Sikertelen regisztráció!", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, getString(R.string.register_unsucc), Toast.LENGTH_LONG).show()
         e.printStackTrace()
     }
 }
