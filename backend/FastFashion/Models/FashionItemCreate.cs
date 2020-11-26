@@ -19,5 +19,7 @@ namespace FastFashion.Models
 
         public string pictureUri { get; set; }
 
+        public int UserId { get; set; }
+
     }
 }

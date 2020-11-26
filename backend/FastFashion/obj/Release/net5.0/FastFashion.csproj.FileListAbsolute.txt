@@ -153,3 +153,4 @@ D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\R
 D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Release\net5.0\ref\FastFashion.dll
 D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Release\net5.0\FastFashion.pdb
 D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\obj\Release\net5.0\FastFashion.genruntimeconfig.cache
+D:\egyetem\szoftverarchitekturak\szoftverarchitekturak\backend\FastFashion\bin\Release\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

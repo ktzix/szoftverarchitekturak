@@ -15,6 +15,7 @@ namespace FastFashion.Models
         }
 
         public DbSet<FashionItem> FashionItems { get; set; }
+        public DbSet<User> User { get; set; }
 
     }
 }

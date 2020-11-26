@@ -5,7 +5,7 @@
       "type": "apis.azure"
     },
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/fastfashiondbserver/databases/FastFashion_db",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/fastfashiondbserver/databases/FastFashion_db",
       "type": "mssql.azure",
       "connectionId": "FashionItemContext",
       "secretStore": "AzureAppSettings"

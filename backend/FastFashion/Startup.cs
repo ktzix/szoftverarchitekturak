@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using FastFashion.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace FastFashion
 {
@@ -28,8 +29,12 @@ namespace FastFashion
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+
             services.AddDbContext<FashionItemContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("FashionItemContext")));
+
+            
 
             services.AddControllers();
             services.AddSwaggerGen();
@@ -43,6 +48,7 @@ namespace FastFashion
                 app.UseDeveloperExceptionPage();
             }
 
+           
 
             app.UseCors(c =>
             {
@@ -64,7 +70,7 @@ namespace FastFashion
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

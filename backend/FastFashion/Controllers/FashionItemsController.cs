@@ -21,10 +21,10 @@ namespace FastFashion.Controllers
         }
 
         // GET: api/FashionItems
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<FashionItem>>> GetFashionItems()
+        [HttpGet("all/{userId}")]
+        public async Task<ActionResult<IEnumerable<FashionItem>>> GetFashionItems(int userId)
         {
-            return await _context.FashionItems.ToListAsync();
+            return await _context.FashionItems.Where(f => f.UserId == userId).ToListAsync();
         }
 
         // GET: api/FashionItems/5
@@ -42,11 +42,11 @@ namespace FastFashion.Controllers
         }
 
         // GET: api/FashionItems/type/csizma
-        [HttpGet("type/{Type}")]
-        public async Task<ActionResult<FashionItem>> GetFashionItemWithType(string type)
+        [HttpGet("type/{Type}/{UserId}")]
+        public async Task<ActionResult<FashionItem>> GetFashionItemWithType(string type, int userId)
         {
 
-            List<FashionItem> items =await _context.FashionItems.Where(item => item.Type == type).ToListAsync();
+            List<FashionItem> items =await _context.FashionItems.Where(f => f.UserId == userId).Where(item => item.Type == type).ToListAsync();
 
            if (items == null)
             {
@@ -55,12 +55,13 @@ namespace FastFashion.Controllers
 
             return this.Ok(items);
         }
+
         // GET: api/FashionItems/style/regi
-        [HttpGet("style/{Style}")]
-        public async Task<ActionResult<FashionItem>> GetFashionItemWithStyle(string style)
+        [HttpGet("style/{Style}/{UserId}")]
+        public async Task<ActionResult<FashionItem>> GetFashionItemWithStyle(string style, int userId)
         {
 
-            List<FashionItem> items = await _context.FashionItems.Where(item => item.Style == style).ToListAsync();
+            List<FashionItem> items = await _context.FashionItems.Where(f => f.UserId == userId ).Where(item => item.Style == style).ToListAsync();
 
             if (items == null)
             {
@@ -108,14 +109,17 @@ namespace FastFashion.Controllers
         [HttpPost]
         public async Task<ActionResult<FashionItem>> PostFashionItem(FashionItemCreate fashionItem)
         {
+            bool exists = await _context.User.AnyAsync(x=> x.UserId == fashionItem.UserId);
+            if (!exists) { return BadRequest(new { message = "User is not existing" }); }
+
             FashionItem item = new FashionItem
             {
                 Style = fashionItem.Style,
                 Detail = fashionItem.Detail,
-                 Type = fashionItem.Type,
-                 Date = fashionItem.Date,
-                 pictureUri = fashionItem.pictureUri
-
+                Type = fashionItem.Type,
+                Date = fashionItem.Date,
+                pictureUri = fashionItem.pictureUri,
+                 UserId = fashionItem.UserId
 
             };
 

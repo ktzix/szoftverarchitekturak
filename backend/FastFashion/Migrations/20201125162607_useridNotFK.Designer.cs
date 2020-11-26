@@ -3,14 +3,16 @@ using FastFashion.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FastFashion.Migrations
 {
     [DbContext(typeof(FashionItemContext))]
-    partial class FashionItemContextModelSnapshot : ModelSnapshot
+    [Migration("20201125162607_useridNotFK")]
+    partial class useridNotFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
