@@ -86,7 +86,7 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
         }
         if(etCategory.text.toString()==""){
             retVal=false
-            etStyle.error=getString(R.string.cat_empty)
+            etCategory.error=getString(R.string.cat_empty)
         }
         if(etDate.text.toString()=="") {
             retVal=false

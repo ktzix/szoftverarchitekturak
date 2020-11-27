@@ -6,8 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
+        android:background="@drawable/ruhakuj"
 
-        android:layout_margin="24dp">
+        android:padding="24dp">
     <Button
             android:text="@string/btn_new_item"
             android:layout_width="379dp"
