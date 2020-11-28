@@ -5,26 +5,38 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="@drawable/ruhakuj"
+
+        android:padding="24dp">
     <Button
-            android:text="Új elem"
-            android:layout_width="0dp"
+            android:text="@string/btn_new_item"
+            android:layout_width="379dp"
             android:layout_height="wrap_content"
-            android:id="@+id/btnNewItem" android:layout_marginTop="8dp"
+            android:id="@+id/btnNewItem"
+            android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnList"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnList" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+    app:layout_constraintVertical_chainStyle="packed"/>
     <Button
-            android:text="Ruhadarabok"
-            android:layout_width="0dp"
+            android:text="@string/btn_list"
+            android:layout_width="379dp"
             android:layout_height="wrap_content"
-            android:id="@+id/btnList" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/btnNewItem"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            android:id="@+id/btnList"
+            app:layout_constraintTop_toBottomOf="@+id/btnNewItem" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogout" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+    <Button
+            android:text="@string/btn_logout"
+            android:layout_width="379dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLogout"
+            app:layout_constraintTop_toBottomOf="@+id/btnList"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"/>
 </android.support.constraint.ConstraintLayout>

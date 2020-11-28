@@ -32,7 +32,7 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title="Feltöltés"
+        title=getString(R.string.title_upload)
         setContentView(R.layout.activity_upload)
         userId=intent.getIntExtra("id", 0)
         ivPicture.setOnClickListener { dispatchTakePictureIntent() }
@@ -60,7 +60,7 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
             fashionInteractor.addFashionItem(item, this::onUploadSuccess, this::onUploadError)
         }
         else{
-            Toast.makeText(applicationContext, "Nincs kitöltve minden mező!", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, getString(R.string.err_upload), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -69,14 +69,14 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
             onUploadError(Exception("item is null"))
         }
         else{
-            Toast.makeText(applicationContext, "Új ruhadarab feltöltve az adott id-val: ${item!!.id}", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, getString(R.string.upload_succ), Toast.LENGTH_LONG).show()
             finish()
         }
     }
 
     private fun onUploadError(e:Throwable){
         e.printStackTrace()
-        Toast.makeText(applicationContext,"Nem sikerült feltölteni a ruhadarabot!", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext,getString(R.string.upload_unsucc), Toast.LENGTH_LONG).show()
     }
 
     private fun valid(): Boolean{
@@ -86,19 +86,19 @@ class UploadActivity : AppCompatActivity(), DatePickerDialogFragment.DateListene
         }
         if(etCategory.text.toString()==""){
             retVal=false
-            etStyle.error="Adja meg a kategóriát!"
+            etCategory.error=getString(R.string.cat_empty)
         }
         if(etDate.text.toString()=="") {
             retVal=false
-            etDate.error="Válassza ki a dátumot!"
+            etDate.error=getString(R.string.date_empty)
         }
         if(etDesc.text.toString()==""){
             retVal=false
-            etDesc.error="Adjon meg leírást!"
+            etDesc.error=getString(R.string.detail_empty)
         }
         if (etStyle.text.toString() == ""){
             retVal=false
-            etStyle.error="Adja meg a stílust"
+            etStyle.error=getString(R.string.style_empty)
         }
         return retVal
     }

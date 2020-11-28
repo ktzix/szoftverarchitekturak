@@ -19,16 +19,16 @@
         <Spinner android:layout_width="match_parent" android:layout_height="30dp" android:layout_weight="1"
          android:id="@+id/spinner"/>
         <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:hint="Keresési érték" android:layout_weight="1"
-        android:id="@+id/etSearchValue"/>
+                  android:hint="@string/hint_value" android:layout_weight="1"
+                  android:id="@+id/etSearchValue"/>
     </LinearLayout>
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="horizontal" android:weightSum="2" android:layout_margin="10dp">
-                <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Keresés" android:id="@+id/btnSearch"
-                android:layout_weight="1" android:layout_marginRight="10dp"/>
+                <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/btn_search" android:id="@+id/btnSearch"
+                        android:layout_weight="1" android:layout_marginRight="10dp"/>
 
-            <Button  android:layout_weight="1" android:layout_marginLeft="10dp" android:layout_width="match_parent"
-                     android:layout_height="wrap_content" android:text="Osszes" android:id="@+id/btnAll"/>
+            <Button android:layout_weight="1" android:layout_marginLeft="10dp" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:text="@string/btn_all" android:id="@+id/btnAll"/>
 
 
         </LinearLayout>

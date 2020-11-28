@@ -35,7 +35,7 @@
 
 
     <TextView android:id="@+id/tvStyle" android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="Stílus"
+              android:text="@string/style"
               app:layout_constraintTop_toBottomOf="@+id/etCategory"
               app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
               android:layout_marginStart="8dp"
@@ -47,7 +47,7 @@
               app:layout_constraintTop_toBottomOf="@+id/tvStyle"
               app:layout_constraintBottom_toTopOf="@+id/tvDate"/>
     <TextView android:id="@+id/tvDate" android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="Megvásárlás ideje"
+              android:text="@string/purchase_date"
               app:layout_constraintTop_toBottomOf="@+id/etStyle"
               app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
               android:layout_marginStart="8dp"
@@ -59,7 +59,7 @@
               app:layout_constraintTop_toBottomOf="@+id/tvDate"
               app:layout_constraintBottom_toTopOf="@+id/tvDesc"/>
     <TextView android:id="@+id/tvDesc" android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="Leírás"
+              android:text="@string/detail"
               app:layout_constraintTop_toBottomOf="@+id/etDate"
               app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
               android:layout_marginStart="8dp"
@@ -71,7 +71,7 @@
               app:layout_constraintTop_toBottomOf="@+id/tvDesc"
               app:layout_constraintBottom_toTopOf="@+id/btnSave"/>
     <Button
-            android:text="Feltöltés"
+            android:text="@string/upload"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnSave" android:layout_marginBottom="8dp"

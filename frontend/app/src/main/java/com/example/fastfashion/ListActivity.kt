@@ -27,7 +27,7 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title="Ruhadarabok"
+        title=getString(R.string.title_list)
         userId=intent.getIntExtra("id",0)
         setContentView(R.layout.activity_list)
         setSupportActionBar(toolbar)
@@ -47,8 +47,8 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
 
     private fun initSpinner(){
         val list=ArrayList<String>()
-        list.add("Típus")
-        list.add("Stílus")
+        list.add(getString(R.string.category))
+        list.add(getString(R.string.style))
         var aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, list)
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter=aa
@@ -70,15 +70,15 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
 
     private fun onLoadError(e: Throwable){
         e.printStackTrace()
-        Toast.makeText(applicationContext, "Nem sikerült betölteni a ruhadarabokat!", Toast.LENGTH_LONG ).show()
+        Toast.makeText(applicationContext, getString(R.string.load_error_all), Toast.LENGTH_LONG ).show()
     }
 
 
     private fun searchItems(){
-        if(spinner.selectedItem.toString()=="Típus"){
+        if(spinner.selectedItem.toString()==getString(R.string.category)){
             fashionInteractor.getFashionItemsByType(userId, etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
         }
-        else if(spinner.selectedItem.toString()=="Stílus"){
+        else if(spinner.selectedItem.toString()==getString(R.string.style)){
             fashionInteractor.getFashionItemsByStyle(userId, etSearchValue.text.toString(), this::onLoadSuccess, this::onLoadError)
         }
     }
@@ -92,23 +92,23 @@ class ListActivity : AppCompatActivity() ,ClothesAdapter.ItemSelectedListener{
     override fun onItemDeleted(item: FashionItem) {
         itemToDelete=item
         val builder = AlertDialog.Builder(this)
-        builder.setMessage("Biztosan törölni szeretnéd ezt a fájlt? ")
-        builder.setPositiveButton("IGEN", DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
+        builder.setMessage(getString(R.string.delete_msg))
+        builder.setPositiveButton(getString(R.string.igen), DialogInterface.OnClickListener { dialogInterface: DialogInterface, i: Int ->
             fashionInteractor.deleteFashionItem(item.id,this::onDeleteSuccess, this::onDeleteError)
         })
-        builder.setNegativeButton("NEM", null)
+        builder.setNegativeButton(getString(R.string.nem), null)
         builder.show()
     }
 
     private fun onDeleteSuccess(item: Void?){
             adapter!!.deleteItem(itemToDelete)
-            Toast.makeText(applicationContext, "Sikeres törlés!", Toast.LENGTH_LONG ).show()
+            Toast.makeText(applicationContext, getString(R.string.delete_succ), Toast.LENGTH_LONG ).show()
 
     }
 
     private fun onDeleteError(e: Throwable){
         e.printStackTrace()
-        Toast.makeText(applicationContext, "Sikertelen törlés!", Toast.LENGTH_LONG ).show()
+        Toast.makeText(applicationContext, getString(R.string.delete_unsucc), Toast.LENGTH_LONG ).show()
     }
 
 
