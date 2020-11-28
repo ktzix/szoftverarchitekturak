@@ -24,8 +24,10 @@ namespace FastFashion.Controllers
         [HttpGet("all/{userId}")]
         public async Task<ActionResult<IEnumerable<FashionItem>>> GetFashionItems(int userId)
         {
-            return await _context.FashionItems.Where(f => f.UserId == userId).ToListAsync();
+            return await _context.FashionItems.Where(f => f.UserId == userId).OrderByDescending(item => item.Date).ToListAsync();
         }
+
+
 
         // GET: api/FashionItems/5
         [HttpGet("{id}")]
@@ -41,7 +43,7 @@ namespace FastFashion.Controllers
             return fashionItem;
         }
 
-        // GET: api/FashionItems/type/csizma
+        // GET: api/FashionItems/type/csizma/1
         [HttpGet("type/{Type}/{UserId}")]
         public async Task<ActionResult<FashionItem>> GetFashionItemWithType(string type, int userId)
         {
@@ -56,7 +58,7 @@ namespace FastFashion.Controllers
             return this.Ok(items);
         }
 
-        // GET: api/FashionItems/style/regi
+        // GET: api/FashionItems/style/regi/1
         [HttpGet("style/{Style}/{UserId}")]
         public async Task<ActionResult<FashionItem>> GetFashionItemWithStyle(string style, int userId)
         {
